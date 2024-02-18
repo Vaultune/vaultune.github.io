@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" href="..\assets/images/feedback.svg">
+    <link rel="icon" href="..\assets/images/feedback.svg">
+    <meta property="og:image" content="..\assets/images/feedback.svg">
+    <meta property="og:title" content="Vaultune">
+    <meta property="og:description" content="Vaultune is a website where you can buy and download Paid or Free music packs for cheap prices!">
+    <meta property="og:url" content="https://vaultune.bytepioneer.repl.co">
+    <meta property="og:type" content="website">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <title>Free Music Packs</title>
+    <script src="assets/js/index.js"></script>
+    <style>
+        .play-pause {
+            -webkit-text-stroke: 3px black;
+            text-stroke: 3px black;
+            font-size: 50px;
+        }
+
+        .loading {
+            display: none;
+            background-image: url('assets/images/loading.webp');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .pack-name,
+        .pack-info {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .pack-name {
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .pack-info {
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .genre {
+            margin: 0;
+        }
+    </style>
+  <link rel="stylesheet" href="..\assets/css/feedback.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+      function submitFeedback() {
+          var name = document.getElementById("name").value;
+          var email = document.getElementById("email").value;
+          var feedback = document.getElementById("feedback").value;
+
+          var data = {
+              content: `> <@886356555774193674> \n
+>>> ## New Feedback\n**Name:** \`${name}\`\n**Email:** \`${email}\`\n\n***Feedback:*** \`${feedback}\``
+          };
+
+          $.ajax({
+              type: "POST",
+              url: "https://discord.com/api/webhooks/1188775373811495032/f3EEWkSon5VzdQxjKsoKnI6-zb_MC3YbUOYvPIQvxiXQpViJORYoW6iKGoSO-NJXtCTc",
+              data: JSON.stringify(data),
+              contentType: "application/json",
+              success: function () {
+                  console.log("Feedback submitted successfully!");
+
+              },
+              error: function () {
+                  console.log("Failed to submit feedback. Please try again.");
+              }
+          });
+      }
+  </script>
+</head>
+<body>
+    <nav>
+        <a href="..\">Home</a>
+        <a style="color: rgb(175,175,175);">Feedback</a>
+        <a style="font-size: 25px;" href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+            &#9776;
+        </a>
+    </nav>
+
+    <script>
+        function toggleNavbar() {
+            var x = document.getElementsByTagName("nav")[0];
+            if (x.className === "") {
+                x.className = "responsive";
+              document.querySelector(".icon").innerHTML = "&times;";
+            } else {
+                x.className = "";
+              document.querySelector(".icon").innerHTML = "&#9776;";
+            }
+        }
+    </script>
+    <h1 style="text-align: center;">Vaultune - Feedback</h1>
+    <p><br></p>
+    <h3 style="text-align: center;">LIMITED TIME: PACKS ARE ALL FREE!</h3>
+    <center>
+    <hr>
+    <div class="feedback-form">
+          <form onsubmit="event.preventDefault(); submitFeedback();">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+    </center>
+    <hr>
+    <h4 style="text-align: center;">MORE PACKS COMING SOON!</h4>
+  <button id="bytepioneer" onclick="bytepioneer()">Solo Work By BytePioneer</button>
+</body>
+</html>

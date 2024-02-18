@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link rel="apple-touch-icon" href="..\assets/images/logo.svg">
+  <link rel="icon" href="..\assets/images/logo.svg">
+  <meta property="og:image" content="..\assets/images/DubstepPack1.jpeg">
+  <meta property="og:title" content="Splash Packs">
+  <meta property="og:description" content="Splash Packs is a website where you can buy and download Paid or Free music packs for cheap prices!">
+  <meta property="og:url" content="https://splash-packs.bytepioneer.repl.co">
+  <meta property="og:type" content="website">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Page</title>
+    <link rel="stylesheet" href="..\assets/css/index.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+    <style>
+      .popup {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          padding: 20px;
+          background-color: #333;
+          border-radius: 10px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+          z-index: 1;
+          text-align: center;
+      }
+
+      .popup h2 {
+          color: #52d6fc;
+          margin-bottom: 20px;
+      }
+
+      .close {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          color: #f8f8f8;
+          font-size: 1.5em;
+          cursor: pointer;
+      }
+
+      .close:hover {
+          color: #ccc;
+      }
+
+      .social-icons {
+          display: flex;
+          justify-content: center;
+      }
+
+      .social-icon {
+          margin: 0 10px;
+          font-size: 2em;
+          color: #f8f8f8;
+          text-decoration: none;
+          transition: color 0.3s ease;
+      }
+
+      .social-icon:hover {
+          color: #61dafb;
+      }
+        .download-container {
+            text-align: center;
+            padding: 50px;
+            background-color: #333;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        body.loaded .download-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            color: #61dafb;
+            font-size: min(8vw, 40px);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #61dafb;
+            font-size: min(5vw, 40px);
+            margin-top: 20px;
+        }
+
+        p {
+            color: #b3b3b3;
+            font-size: min(4vw, 20px);
+            margin-bottom: 25px;
+        }
+
+        a {
+          padding: 3px;
+          text-decoration: none;
+          color: #f8f8f8;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+  <div id="sharePopup" class="popup">
+      <span class="close" id="closePopup">&times;</span>
+      <h2>Please Share This Page</h2>
+      <button id="copy-link" onclick="copyLink()">Share Download Link.</button>
+      <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      </div>
+  </div>
+    <div style="opacity: 1;" class="download-container">
+        <h1 style="opacity: 1;" id="h1">Downloading Your Music Pack</h1>
+        <div style="opacity: 1;" id="download-info"></div>
+      <div id="image"></div>
+        <a href="..\">Home</a>
+    </div>
+
+    <script src="..\assets/js/download.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+      const shareButton = document.getElementById('shareButton');
+      const sharePopup = document.getElementById('sharePopup');
+      const closePopup = document.getElementById('closePopup');
+
+      sharePopup.style.display = 'block';
+
+      closePopup.addEventListener('click', function() {
+          sharePopup.style.display = 'none';
+      });
+
+      window.addEventListener('click', function(event) {
+          if (event.target === sharePopup) {
+              sharePopup.style.display = 'none';
+          }
+      });
+  });
+</script>
+  <button id="bytepioneer" onclick="bytepioneer()">Solo Work By BytePioneer</button>
+</body>
+</html>

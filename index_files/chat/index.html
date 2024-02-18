@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Chat</title>
+    <link rel="stylesheet" href="..\assets/css/index.css">
+</head>
+<body>
+    <h1>Create Support Chat</h1>
+    <form id="chatForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="button" onclick="createChat()">Create Chat</button>
+    </form>
+
+    <script>
+        function createChat() {
+            const name = document.getElementById('name').value;
+            fetch('/createChat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name }),
+            })
+            .then(response => response.text())
+            .catch(error => console.error('Error creating chat:', error));
+        }
+    </script>
+</body>
+</html>
